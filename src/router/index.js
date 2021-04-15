@@ -7,7 +7,15 @@ const routes = [
     meta: {
       layout: 'main'
     },
-    component: () => import("../views/Home.vue"),
+    component: () => import("@/views/Home.vue"),
+  },
+  {
+    path: "/cart",
+    name: "Cart",
+    meta: {
+      layout: 'main'
+    },
+    component: () => import("@/views/Cart.vue"),
   }
 ];
 
