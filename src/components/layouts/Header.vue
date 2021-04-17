@@ -1,29 +1,31 @@
 <template>
   <header class="header_container">
-    <div>
-      Logo
-    </div>
+    <router-link to="/">Logo</router-link>
     <Navigation :categories='categories' />
+    <HeaderCart />
   </header>
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { computed, onMounted } from 'vue'
 import Navigation from './Navigation.vue'
+import HeaderCart from './HeaderCart.vue'
+import { useStore } from 'vuex'
 
 export default {
   setup() {
-    const categories = reactive([
-      { title: 'PC', id: 1 },
-      { title: 'PS4', id: 2 },
-      { title: 'XBox', id: 3 }
-    ])
+    const store = useStore()
+    const categories = computed(() => store.getters.categories)
+    onMounted(() => {
+      store.dispatch('fetchCategories')
+    })
     return {
       categories
     }
   },
   components: {
-    Navigation
+    Navigation,
+    HeaderCart
   }
 }
 </script>
