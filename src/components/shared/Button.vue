@@ -4,7 +4,8 @@
     width: `${width}%`,
     height: `${height}px`,
     color: textColor,
-    borderRadius: `${borderRadius}px`
+    borderRadius: `${borderRadius}px`,
+    fontSize: `${fontSize}px`
   }">
     <slot />
   </button>
@@ -32,6 +33,10 @@ export default {
     borderRadius: {
       type: Number,
       default: 0
+    },
+    fontSize: {
+      type: Number,
+      default: 15
     }
   }
 }
@@ -40,7 +45,6 @@ export default {
 <style scoped>
   button {
     border: none;
-    font-size: 15px;
     outline: none;
     cursor: pointer;
   }
