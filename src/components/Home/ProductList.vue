@@ -1,6 +1,13 @@
 <template>
   <div class="product_list_container">
-    <ProductCard :products="products" v-if="products.length" />
+    <template v-if="products.length">
+      <ProductCard
+        v-for="product in products"
+        :key="product.id"
+        :product="product"
+        @addProductToCart="addProductToCart"
+      />
+    </template>
     <h4 v-else>No one products!</h4>
   </div>
 </template>
@@ -14,11 +21,15 @@ export default {
   setup() {
     const store = useStore()
     const products = computed(() => store.getters.products)
+    const addProductToCart = product => {
+      store.dispatch('addProductToCart', product)
+    }
     onMounted(() => {
       store.dispatch('fetchProducts')
     })
     return {
-      products
+      products,
+      addProductToCart
     }
   },
   components: {

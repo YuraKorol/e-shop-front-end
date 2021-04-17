@@ -1,10 +1,9 @@
 <template>
-  <div
-    class="product_card_container"
-    v-for="product in products"
-    :key="product.id"
-  >
-    <div class="product_card_img" :style="{ backgroundImage: `url(${product.imageUrl})` }"></div>
+  <div class="product_card_container">
+    <div
+      class="product_card_img"
+      :style="{ backgroundImage: `url(${product.imageUrl})` }"
+    ></div>
     <h4>{{ product.title }}</h4>
     <p>Price: <strong>{{ product.price }}$</strong></p>
     <Button
@@ -13,6 +12,7 @@
       :width="30"
       :height="30"
       :borderRadius="5"
+      @click="$emit('addProductToCart', product)"
     >Buy</Button>
   </div>
 </template>
@@ -22,8 +22,8 @@ import Button from '@/components/shared/Button.vue'
 
 export default {
   props: {
-    products: {
-      type: Array
+    product: {
+      type: Object
     }
   },
   components: {
