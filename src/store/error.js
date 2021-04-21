@@ -7,11 +7,15 @@ export default {
   },
   mutations: {
     setError(state, payload) {
-      state.errorMessage = payload
+      if(typeof payload === 'object') {
+        state.errorMessage = payload.message
+      } else {
+        state.errorMessage = payload
+      }
       state.isError = true
       setTimeout(() => {
         store.commit('clearError')
-      }, 100000)
+      }, 2000)
       
     },
     clearError(state) {
