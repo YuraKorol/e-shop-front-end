@@ -19,7 +19,7 @@ import { useStore } from 'vuex';
 export default {
   setup() {
     const store = useStore()
-    let stripe = ref(window.Stripe(`pk_test_51IhYq1BCM59oMGuxwT1fMdwUkWckogmrr76i87aWHDGN8LY3oddOhe1wELt7v73pShSIPLBBUDNQEGOo7FcT8xDl00DfGGynsZ`))
+    let stripe = ref(window.Stripe(process.env.VUE_APP_STRIPE_PUBLIC_KEY))
     let elements = ref(stripe.value.elements())
     let card = ref(null)
 
