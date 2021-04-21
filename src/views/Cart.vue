@@ -1,16 +1,20 @@
 <template>
   <div class="cart_page_container">
     <CartProductsList />
-    <CartResult
-      :cartCount="cartCount"
-      :cartTotalPrice="cartTotalPrice"
-    />
+    <template v-if="cartCount">
+      <CartResult
+        :cartCount="cartCount"
+        :cartTotalPrice="cartTotalPrice"
+      />
+      <PaymentCard />
+    </template>
   </div>
 </template>
 
 <script>
 import CartProductsList from '@/components/Cart/CartProductsList.vue'
 import CartResult from '@/components/Cart/CartResult.vue'
+import PaymentCard from '@/components/Cart/PaymentCard.vue'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
 
@@ -19,6 +23,7 @@ export default {
     const store = useStore()
     const cartCount = computed(() => store.getters.cartCount)
     const cartTotalPrice = computed(() => store.getters.cartTotalPrice)
+    
     return {
       cartCount,
       cartTotalPrice
@@ -26,7 +31,8 @@ export default {
   },
   components: {
     CartProductsList,
-    CartResult
+    CartResult,
+    PaymentCard
   }
 }
 </script>
