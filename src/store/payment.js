@@ -8,9 +8,10 @@ export default {
 
   },
   actions: {
-    async handleBuy({ getters, commit }) {
+    async handleBuy({ getters, commit }, orderData) {
       try {
-        const intent = await postPaymentIntent({ amount: getters.cartTotalPrice })
+        const intent = await postPaymentIntent({ amount: getters.cartTotalPrice, ...orderData })
+        console.log(intent)
         return intent
       } catch(err) {
         commit('setError', err)
