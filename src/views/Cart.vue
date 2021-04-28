@@ -1,20 +1,20 @@
 <template>
   <div class="cart_page_container">
-    <CartProductsList />
-    <template v-if="cartCount">
-      <CartResult
-        :cartCount="cartCount"
-        :cartTotalPrice="cartTotalPrice"
-      />
-      <PaymentCard />
-    </template>
+    <CartProductsList v-if="cartCount" />
+    <h4 v-if="!cartCount">Cart is empty!</h4>
+    <CartResult
+      v-if="cartCount"
+      :cartCount="cartCount"
+      :cartTotalPrice="cartTotalPrice"
+    />
+    <PaymentForm v-if="cartCount" />
   </div>
 </template>
 
 <script>
 import CartProductsList from '@/components/Cart/CartProductsList.vue'
 import CartResult from '@/components/Cart/CartResult.vue'
-import PaymentCard from '@/components/Cart/PaymentCard.vue'
+import PaymentForm from '@/components/Cart/PaymentForm.vue'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
 
@@ -32,13 +32,17 @@ export default {
   components: {
     CartProductsList,
     CartResult,
-    PaymentCard
+    PaymentForm
   }
 }
 </script>
 
 <style>
   .cart_page_container {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 50%;
   }
 </style>

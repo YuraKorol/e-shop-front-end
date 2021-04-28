@@ -18,6 +18,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 30px;
+    margin: 30px auto;
   }
 </style>

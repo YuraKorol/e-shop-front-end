@@ -1,14 +1,11 @@
 <template>
   <div class="cart_list_container">
-    <template v-if="cartProducts.length">
-      <CartProductCard
-        v-for="cartProduct in cartProducts"
-        :key="cartProduct.id"
-        :cartProduct="cartProduct"
-        @deleteProductFromCart="deleteProductFromCart"
-      />
-    </template>
-    <h4 v-else>Cart is empty!</h4>
+    <CartProductCard
+      v-for="cartProduct in cartProducts"
+      :key="cartProduct.id"
+      :cartProduct="cartProduct"
+      @deleteProductFromCart="deleteProductFromCart"
+    />
   </div>
 </template>
 
@@ -39,7 +36,8 @@ export default {
   .cart_list_container {
     display: inline-flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
-    width: 65%;
+    width: 100%;
   }
 </style>

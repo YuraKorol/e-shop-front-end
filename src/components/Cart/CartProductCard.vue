@@ -35,6 +35,7 @@ export default {
     justify-content: space-between;
     border-radius: 10px;
     padding: 7px;
+    min-width: 250px;
     width: 100%;
     height: 100px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);

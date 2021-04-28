@@ -23,6 +23,6 @@ export default {
   .cart_product_result {
     display: flex;
     justify-content: space-around;
-    width: 65%;
+    width: 100%;
   }
 </style>
